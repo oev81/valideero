@@ -1,0 +1,8 @@
+0.0.1
+=====
+- Moves global context to object (ValidationContext).
+- Removes magic with `+` and `?` prefixes. Use Nullable, Optional instead.
+- Method `validate` always returns validated object.
+- Fixes `unicode` issues.
+- Adds validation context for json objects. 
+- many other non-compatible changes ...
