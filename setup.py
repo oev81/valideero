@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="valideero",
-    version="0.0.1",
+    version="0.0.3",
     description="Validation library for Python",
     long_description=open("README.rst").read(),
     url="https://github.com/oev81/valideero",
