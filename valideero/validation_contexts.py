@@ -10,7 +10,7 @@ from .validators import make_default_validation_context
 from .compat import json_repr
 
 
-__all__ = ["make_json_validation_context", "make_json_validation_context"]
+__all__ = ["make_validation_context", "make_json_validation_context"]
 
 
 def make_validation_context():
