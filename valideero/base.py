@@ -56,7 +56,7 @@ class ValidationError(ValueError):
             type_name = self.val_context.type_names.get_type_name(self.value.__class__)
             message = "Invalid value {} ({}): {}".format(value, type_name, self.msg)
         else:
-            message = ""
+            message = self.msg
         if len(self.error_path_items) > 0:
             path_items = [item for item in reversed(self.error_path_items)]
             if not isinstance(path_items[0], string_types):
@@ -109,12 +109,11 @@ class TypeNames(object):
 
 
 class ValidationContext(object):
-    def __init__(self, type_names, named_validators, validators_factories, repr_method, adapt=True):
+    def __init__(self, type_names, named_validators, validators_factories, repr_method):
         self.type_names = type_names
         self.named_validators = named_validators
         self.validators_factories = validators_factories
         self.repr = repr_method
-        self.adapt = True
 
     def register(self, name, validator):
         if not isinstance(validator, Validator):
@@ -212,7 +211,10 @@ class Validator(object):
         self.val_context = None  # type: ValidationContext
 
     def set_validation_context(self, context):
-        self.val_context = context
+        # set context only once
+        # for cases when contexts are mixed
+        if self.val_context is None:
+            self.val_context = context
 
     def parse(self):
         pass

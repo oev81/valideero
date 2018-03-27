@@ -100,15 +100,12 @@ class NoneValue(Validator):
 
     def __init__(self, default=None):
         self._default = default
-        super(Validator, self).__init__()
+        super(NoneValue, self).__init__()
 
     def validate(self, value):
         if value is not None:
             self.error(value)
-        # if adapt:
         return self._default if not callable(self._default) else self._default()
-        # else:
-        #     return None
 
     @property
     def humanized_name(self):
