@@ -8,7 +8,7 @@ import numbers
 import re
 
 from .base import Validator, ValidationError, ValidationContext, UNDEFINED, TypeNames
-from .compat import string_types, izip, imap, iteritems, text_type, unicode_safe, compatible_repr
+from .compat import string_types, izip, imap, iteritems, text_type, binary_type, unicode_safe, compatible_repr
 
 __all__ = [
     "AnyOf", "AllOf", "ChainOf", "Nullable", "NoneValue",
